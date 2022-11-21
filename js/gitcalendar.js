@@ -1,8 +1,6 @@
 var github_canlendar = (git_user, git_color) => {
     git_user = 'Zixu203';
     var git_githubapiurl = "https://python-github-calendar-api.vercel.app/api?" + git_user;
-    var git_fixed = 'fixed';
-    var git_px = 'px';
     var git_month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     var git_monthchange = [];
     var git_oneyearbeforeday = '';
@@ -10,21 +8,13 @@ var github_canlendar = (git_user, git_color) => {
     var git_amonthago = '';
     var git_aweekago = '';
     var git_weekdatacore = 0;
-    var git_datacore = 0;
     var git_total = 0;
-    var git_datadate = '';
-    var git_git_data = [];
     var git_positionplusdata = [];
     var git_firstweek = [];
     var git_lastweek = [];
     var git_beforeweek = [];
     var git_thisweekdatacore = 0;
-    var git_mounthbeforeday = 0;
-    var git_mounthfirstindex = 0;
-    var git_crispedges = 'crispedges';
     var git_thisdayindex = 0;
-    var git_amonthagoindex = 0;
-    var git_amonthagoweek = [];
     var git_firstdate = [];
     var git_first2date = [];
     var git_montharrbefore = [];
@@ -50,7 +40,6 @@ var github_canlendar = (git_user, git_color) => {
         var c = document.getElementById("gitcanvas");
         c.style.width ='100%';
         c.style.height ='';
-        var cmessage = document.getElementById("gitmessage");
         var ctx = c.getContext("2d");
         width = c.width = document.getElementById("gitcalendarcanvasbox").offsetWidth;
         height = c.height = 9 * 0.96 * c.width / git_data.length;
@@ -78,10 +67,10 @@ var github_canlendar = (git_user, git_color) => {
         if (document.body.clientWidth > 700) {
             ctx.font = "600  Arial";
             ctx.fillStyle = '#aaa';
-            ctx.fillText("Sun", 0, 1.9 * linemaxwitdh);
-            ctx.fillText("Tue", 0, 3.9 * linemaxwitdh);
-            ctx.fillText("Thu", 0, 5.9 * linemaxwitdh);
-            ctx.fillText("Sat", 0, 7.9 * linemaxwitdh);
+            // ctx.fillText("Sun", -5, 1.9 * linemaxwitdh);
+            // ctx.fillText("Tue", -5, 3.9 * linemaxwitdh);
+            // ctx.fillText("Thu", -5, 5.9 * linemaxwitdh);
+            // ctx.fillText("Sat", -5, 7.9 * linemaxwitdh);
             var monthindexlist = width / 24;
             for (var index in git_monthchange) {
                 ctx.fillText(git_monthchange[index], monthindexlist, 0.7 * linemaxwitdh);
@@ -210,15 +199,13 @@ var github_canlendar = (git_user, git_color) => {
     };
     var git_thiscolor = (color, x) => {
         if (x === 0) {
-            var i = parseInt(x / 2);
             return color[0]
         } else if (x < 2) {
             return color[1]
-        } else if (x < 20) {
-            var i = parseInt(x / 2);
-            return color[i]
+        } else if (x < 8) {
+            return color[parseInt(x / 2)];
         } else {
-            return color[9]
+            return color[4]
         }
     };
     var tooltip_html = (x, y, span1, span2) => {
@@ -232,7 +219,7 @@ var github_canlendar = (git_user, git_color) => {
     };
     var github_info_box = (user, color) => {
         var html = '';
-        html += '<div id="git_tooltip_container"></div><div class="contrib-footer clearfix mt-1 mx-3 px-3 pb-1"><div class="float-left text-gray">Source: <a href="https://github.com/' + user + '" target="blank">@' + user + '</a></div><div class="contrib-legend text-gray">Less <ul class="legend"><li style="background-color:' + color[0] + '"></li><li style="background-color:' + color[2] + '"></li><li style="background-color:' + color[4] + '"></li><li style="background-color:' + color[6] + '"></li><li style="background-color:' + color[8] + '"></li></ul>More </div></div>';
+        html += '<div id="git_tooltip_container"></div><div class="contrib-footer clearfix mt-1 mx-3 px-3 pb-1"><div class="float-left text-gray">Source: <a href="https://github.com/' + user + '" target="blank">@' + user + '</a></div><div class="contrib-legend text-gray">Less <ul class="legend"><li style="background-color:' + color[0] + '"></li><li style="background-color:' + color[1] + '"></li><li style="background-color:' + color[2] + '"></li><li style="background-color:' + color[3] + '"></li><li style="background-color:' + color[4] + '"></li></ul>More </div></div>';
         return html
     };
     var github_main_box = (monthchange, git_data, user, color, total, thisweekdatacore, weekdatacore, oneyearbeforeday, thisday, aweekago, amonthago) => {
@@ -241,7 +228,7 @@ var github_canlendar = (git_user, git_color) => {
         var infobox = github_info_box(user, color);
         var style = github_main_style();
         html += '<div class="position-relative"><div class="border py-2 graph-before-activity-overview"><div class="js-gitcalendar-graph mx-md-2 mx-3 d-flex flex-column flex-items-end flex-xl-items-center overflow-hidden pt-1 is-graph-loading graph-canvas gitcalendar-graph height-full text-center">' + canvasbox + '</div>' + infobox + '</div></div>';
-        html += '<div style="display:flex;width:100%"><div class="contrib-column contrib-column-first table-column"><span class="text-muted">Push in last year</span><span class="contrib-number">' + total + '</span><span class="text-muted">' + oneyearbeforeday + '&nbsp;-&nbsp;' + thisday + '</span></div><div class="contrib-column table-column"><span class="text-muted">Push in last month</span><span class="contrib-number">' + thisweekdatacore + '</span><span class="text-muted">' + amonthago + '&nbsp;-&nbsp;' + thisday + '</span></div><div class="contrib-column table-column"><span class="text-muted">Push in last week</span><span class="contrib-number">' + weekdatacore + '</span><span class="text-muted">' + aweekago + '&nbsp;-&nbsp;' + thisday + '</span></div></div>' + style;
+        html += '<div style="display:flex;width:100%"><div class="contrib-column contrib-column-first table-column"><span class="text-muted">Push in past year</span><span class="contrib-number">' + total + '</span><span class="text-muted">' + oneyearbeforeday + '&nbsp;-&nbsp;' + thisday + '</span></div><div class="contrib-column table-column"><span class="text-muted">Push in past month</span><span class="contrib-number">' + thisweekdatacore + '</span><span class="text-muted">' + amonthago + '&nbsp;-&nbsp;' + thisday + '</span></div><div class="contrib-column table-column"><span class="text-muted">Push in past week</span><span class="contrib-number">' + weekdatacore + '</span><span class="text-muted">' + aweekago + '&nbsp;-&nbsp;' + thisday + '</span></div></div>' + style;
         return html
     };
     var github_main_style = () => {
@@ -271,8 +258,8 @@ var loading_git = (color) => {
     var github_container = document.getElementById('github_container');
     var github_loading = document.getElementById('github_loading');
     var git_purple = ['#ebedf0', '#fdcdec', '#fc9bd9', '#fa6ac5', '#f838b2', '#f5089f', '#c4067e', '#92055e', '#540336', '#48022f', '#30021f',];
-    var git_green = ['#ebedf0', '#f0fff4', '#dcffe4', '#bef5cb', '#85e89d', '#34d058', '#28a745', '#22863a', '#176f2c', '#165c26', '#144620'];
+    var git_green = ['#ebedf0', '#9be9a8', '#40c463', '#30a14e', '#216e39', '#34d058', '#28a745', '#22863a', '#176f2c', '#165c26', '#144620'];
     var git_blue = ['#ebedf0', '#f1f8ff', '#dbedff', '#c8e1ff', '#79b8ff', '#2188ff', '#0366d6', '#005cc5', '#044289', '#032f62', '#05264c',];
     var git_color = git_green;
-    append_div_gitcalendar(github_container, loading_git(git_color[4]));
+    append_div_gitcalendar(github_container, loading_git(git_color[2]));
     github_canlendar(git_user, git_color)})()
