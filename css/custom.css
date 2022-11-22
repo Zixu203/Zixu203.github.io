@@ -11,6 +11,25 @@ body {
         default;
 }
 
+/* Font */
+@font-face{
+  font-family: 'Sarasa';
+  font-display: swap;
+  src: url('../font/sarasa-ui-tc-regular.ttf') format("truetype");
+}
+
+@font-face{
+  font-family: 'Monokai';
+  font-display: swap;
+  src: url('../font/mononoki-Regular.otf') format("truetype");
+}
+
+body{
+  font-family: 'Sarasa';
+}
+
+
+/* Disable Rotate Effect */
 .avatar-img img {
   /* display: ; */
   -webkit-transition: none;
