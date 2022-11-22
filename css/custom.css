@@ -11,6 +11,10 @@ body {
         default;
 }
 
+.avatar-img img {
+  display: none;
+}
+
 /* Custom Scrolling Bar */
 
 ::-webkit-scrollbar {
