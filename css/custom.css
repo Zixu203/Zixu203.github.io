@@ -24,6 +24,12 @@ body {
   src: url('../font/mononoki-Regular.otf') format("truetype");
 }
 
+@font-face{
+  font-family: 'Kenyan Coffee';
+  font-display: swap;
+  src: url('../font/kenyan\ coffee.ttf') format("truetype");
+}
+
 body{
   font-family: 'Sarasa';
 }
