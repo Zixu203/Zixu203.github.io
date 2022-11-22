@@ -12,7 +12,12 @@ body {
 }
 
 .avatar-img img {
-  display: none;
+  /* display: ; */
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  -ms-transition: none;
+  transition: none;
 }
 
 /* Custom Scrolling Bar */
