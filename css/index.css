@@ -1403,7 +1403,7 @@ input::placeholder {
   z-index: -999;
   width: 100%;
   height: 100%;
-  background: url(https://Zixu203.github.io/Resources/Background.jpg);
+  background: url(https://Zixu203.github.io/Resources/Background1.jpg);
   background-attachment: local;
   background-position: center;
   background-size: cover;
@@ -4953,6 +4953,29 @@ span.mathjax-overflow {
 }
 .snackbar-css {
   border-radius: 5px !important;
+}
+[data-theme="dark"] #web_bg {
+  background: url(https://Zixu203.github.io/Resources/Background2.jpg);
+  background-attachment: local;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+@media screen and (max-width: 800px) {
+  #web_bg {
+    background: url(https://Zixu203.github.io/Resources/Background1.jpg) !important;
+    background-attachment: local !important;
+    background-position: center !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+  }
+  [data-theme="dark"] #web_bg {
+    background: url(https://Zixu203.github.io/Resources/Background2.jpg) !important;
+    background-attachment: local !important;
+    background-position: center !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+  }
 }
 #article-container .btn-center {
   margin: 0 0 20px;
