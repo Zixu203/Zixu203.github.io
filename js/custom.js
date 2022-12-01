@@ -102,7 +102,7 @@ class Cursor {
 
 // Running Time below About Page
 setInterval(()=>{
-    let create_time = Math.round(new Date('2021-12-29 17:56:34').getTime() / 1000);
+    let create_time = Math.round(new Date('2022-11-13 00:00:00').getTime() / 1000);
     let timestamp = Math.round((new Date().getTime() + 8 * 60 * 60 * 1000) / 1000);
     let second = timestamp - create_time;
     let time = new Array(0, 0, 0, 0, 0);
@@ -111,6 +111,6 @@ setInterval(()=>{
     if(second >= 3600) time[2] = parseInt(second / 3600), second %= 3600;
     if(second >= 60) time[3] = parseInt(second / 60), second %= 60;
     if(second > 0) time[4] = second;
-    currentTimeHtml='This Website has keep running for '+time[0]+' years, '+time[1]+' days, '+time[2]+' hours, '+time[3]+' minutes, and '+time[4]+' seconds.';
+    currentTimeHtml='<b>This Website has keep running for '+time[0]+' years, '+time[1]+' days, '+time[2]+' hours, '+time[3]+' minutes, and '+time[4]+' seconds.</b>';
     document.getElementById("running-time").innerHTML = currentTimeHtml;
 },1000);
