@@ -198,19 +198,14 @@ var github_canlendar = (git_user, git_color) => {
         }
     };
     var git_thiscolor = (color, x) => {
-        if (x === 0) {
-            return color[0]
-        } else if (x < 2) {
-            return color[1]
-        } else if (x < 8) {
-            return color[parseInt(x / 2)];
-        } else {
-            return color[4]
-        }
+        if (x === 0) return color[0]
+        else if (x < 2) return color[1]
+        else if (x < 8) return color[parseInt(x / 2)];
+        else return color[4]
     };
     var tooltip_html = (x, y, span1, span2) => {
         var html = '';
-        html += '<div class="gitmessage" style="top:' + y + 'px;left:' + x + 'px;position: fixed;z-index:9999"><div class="angle-wrapper" style="display:block;"><span>' + span1 + '&nbsp;</span><span>' + span2 + ' 次上传</span></div></div>';
+        // html += '<div class="gitmessage" style="top:' + y + 'px;left:' + x + 'px;position: fixed;z-index:9999"><div class="angle-wrapper" style="display:block;"><span>' + span1 + '&nbsp;</span><span>' + span2 + ' 次上传</span></div></div>';
         return html
     };
     var github_canvas_box = () => {
@@ -263,3 +258,21 @@ var loading_git = (color) => {
     var git_color = git_green;
     append_div_gitcalendar(github_container, loading_git(git_color[2]));
     github_canlendar(git_user, git_color)})()
+
+
+window.onscroll = percent;// 执行函数
+    function percent() {
+        let a = document.documentElement.scrollTop || window.pageYOffset, // 卷去高度
+            b = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight, document.body.offsetHeight, document.documentElement.offsetHeight, document.body.clientHeight, document.documentElement.clientHeight) - document.documentElement.clientHeight, // 整个网页高度
+            result = Math.round(a / b * 100),       // 计算百分比
+            up = document.querySelector("#go-up")   // 获取按钮
+        if (result <= 95) {
+            up.childNodes[0].style.display = 'none'
+            up.childNodes[1].style.display = 'block'
+            up.childNodes[1].innerHTML = result;
+        } else {
+            up.childNodes[1].style.display = 'none'
+            up.childNodes[0].style.display = 'block'
+        }
+    }
+    
