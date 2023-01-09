@@ -114,3 +114,14 @@ setInterval(()=>{
     currentTimeHtml='<b>This Website has keep running for '+time[0]+' years, '+time[1]+' days, '+time[2]+' hours, '+time[3]+' minutes, and '+time[4]+' seconds.</b>';
     document.getElementById("running-time").innerHTML = currentTimeHtml;
 },1000);
+
+// Git Calendar
+(function(){
+    var username = 'Zixu203';
+    GitHubCalendar("#github_container", username, {responsive: true, tooltips: true}).then(function() {
+    t = document.getElementsByClassName('float-left')[0];
+    t.remove();
+})
+})()
+
+    
