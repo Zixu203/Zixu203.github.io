@@ -1,0 +1,183 @@
+/* Cursor */
+#cursor {
+  position: fixed;
+  width: 16px;
+  height: 16px;
+  background: #FFFFFF;
+  border-radius: 8px;
+  opacity: 0.25;
+  z-index: 10086;
+  pointer-events: none;
+  transition: 0.2s ease-in-out;
+  transition-property: background, opacity, transform;
+}
+
+#cursor.hidden {
+  opacity: 0;
+}
+
+#cursor.hover {
+  opacity: 0.1;
+  transform: scale(2.5);
+}
+
+#cursor.active {
+  opacity: 0.5;
+  transform: scale(0.5);
+}
+
+/* Font */
+@font-face{
+  font-family: 'Sarasa';
+  font-display: swap;
+  src: url('../font/sarasa-ui-tc-regular.ttf') format("truetype");
+}
+
+@font-face{
+  font-family: 'Monokai';
+  font-display: swap;
+  src: url('../font/mononoki-Regular.otf') format("truetype");
+}
+
+@font-face{
+  font-family: 'Kenyan Coffee';
+  font-display: swap;
+  src: url('../font/kenyan\ coffee.ttf') format("truetype");
+}
+
+body{
+  font-family: 'Sarasa';
+}
+
+
+/* Disable Rotate Effect */
+.avatar-img img {
+  /* display: ; */
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  -ms-transition: none;
+  transition: none;
+}
+
+/* Custom Scrolling Bar */
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: rgba(73, 177, 245, 0.2);
+    background-color: transparent;
+    border-radius: 2em;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: gray;
+    background-image: -webkit-linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.4) 75%,
+      transparent
+    );
+    border-radius: 2em;
+  }
+  
+  ::-webkit-scrollbar-corner {
+    background-color: transparent;
+  }
+  
+  ::-moz-selection {
+    color: #fff;
+    background-color: #49b1f5;
+  }
+
+
+/* Menu */
+
+#nav *::after{
+  background-color: transparent!important;
+}
+
+/* .menus_item_child li:not(#sidebar-menus li){
+  float: left;
+  border-radius: 6px!important;
+  -webkit-border-radius: 6px!important;
+  -moz-border-radius: 6px!important;
+  -ms-border-radius: 6px!important;
+  -o-border-radius: 6px!important;
+}
+.menus_item_child:not(#sidebar-menus ul){
+  left:50%;
+  translate:-50%;
+} */
+
+/* 一圖流 */
+#footer {
+  background: transparent !important;
+}
+#page-header {
+  background: transparent !important;
+}
+
+#footer::before {
+  background: transparent !important;
+}
+#page-header::before {
+  background: transparent !important;
+}
+
+[data-theme="dark"] #footer::before {
+  background: transparent !important;
+}
+[data-theme="dark"] #page-header::before {
+  background: transparent !important;
+}
+
+
+/* Persentage */
+/* 返回顶部 */
+
+button#go-up #percent {
+  display: none;
+  font-weight: bold;
+  font-size: 15px !important;
+}
+
+button#go-up span {
+  font-size: 12px!important;
+  margin-right: -1px;
+}
+
+/* 鼠标滑动到按钮上时显示返回顶部图标 */
+button#go-up:hover i {
+  display: block !important;
+}
+
+button#go-up:hover #percent {
+  display: none !important;
+}
+
+/* Blur Effect */
+#page-header,
+#web_bg {
+    -webkit-animation: imgblur 3s 1 ease-in-out;
+    animation: imgblur 3s 1 ease-in-out;
+}
+@keyframes imgblur {
+  0% {
+    filter: blur(5px);
+  }
+  100% {
+    filter: blur(0px);
+  }
+}
+/*适配使用-webkit内核的浏览器 */
+@-webkit-keyframes imgblur {
+  0% {
+    -webkit-filter: blur(5px);
+  }
+  100% {
+    -webkit-filter: blur(0px);
+  }
+}
